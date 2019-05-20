@@ -69,6 +69,7 @@
 %% registered with the consumer tag. In this case, the relevant
 %% deliveries will be sent to the default consumer.
 register_default_consumer(ChannelPid, ConsumerPid) ->
+    lager:debug("TEST 34407 step 1: amqp_selective_consumer:register_default_consumer"),
     amqp_channel:call_consumer(ChannelPid,
                                {register_default_consumer, ConsumerPid}).
 
@@ -191,6 +192,7 @@ handle_info({'DOWN', _MRef, process, Pid, _Info},
 handle_call({register_default_consumer, Pid}, _From,
             State = #state{default_consumer = PrevPid,
                            monitors         = Monitors}) ->
+    lager:debug("TEST 34407 step 4: amqp_selective_consumer handle_call rdc function clause"),
     Monitors1 = case PrevPid of
                     none -> Monitors;
                     _    -> remove_from_monitor_dict(PrevPid, Monitors)

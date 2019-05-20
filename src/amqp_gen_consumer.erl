@@ -235,7 +235,7 @@ consumer_call_reply(Return, State) ->
 handle_call({consumer_call, Msg}, From,
             State = #state{module       = ConsumerModule,
                            module_state = MState}) ->
-    lager:debug("TEST 34407: amqp_gen_consumer:handle_call (consumer_call)"),
+    lager:debug("TEST 34407 step 3: amqp_gen_consumer:handle_call (consumer_call)"),
     case ConsumerModule:handle_call(Msg, From, MState) of
         {noreply, NewMState} ->
             {noreply, State#state{module_state = NewMState}};

@@ -408,7 +408,7 @@ handle_call({wait_for_confirms, Timeout}, From, State) ->
 %% @private
 handle_call({call_consumer, Msg}, _From,
             State = #state{consumer = Consumer}) ->
-    lager:debug("TEST 34407: amqp_channel:call_consumer to ~p", [Consumer]),
+    lager:debug("TEST 34407 step 2: amqp_channel:call_consumer to ~p", [Consumer]),
     {reply, amqp_gen_consumer:call_consumer(Consumer, Msg), State};
 %% @private
 handle_call({subscribe, BasicConsume, Subscriber}, From, State) ->
